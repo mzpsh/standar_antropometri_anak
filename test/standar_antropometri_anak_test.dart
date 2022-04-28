@@ -43,4 +43,45 @@ void main() {
       expect(result, 0);
     });
   });
+
+  group('getBodyHeightToAgeIndex', () {
+    test(
+        'should return a correct male index if body height is more than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(119.9, 54);
+      expect(result, 3.0);
+    });
+    test(
+        'should return a correct male index if body height is less than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(90.7, 48);
+      expect(result, -3.0);
+    });
+    test('should return a correct male index if body height is equal to median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(104.4, 50);
+      expect(result, 0);
+    });
+    test(
+        'should return a correct female index if body height is more than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(70.7, 5,
+          isFemale: true);
+      expect(result, 3.0);
+    });
+    test(
+        'should return a correct female index if body height is less than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(73.7, 20,
+          isFemale: true);
+      expect(result, -3.0);
+    });
+    test(
+        'should return a correct female index if body height is equal to median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(95.7, 37,
+          isFemale: true);
+      expect(result, 0);
+    });
+  });
 }
