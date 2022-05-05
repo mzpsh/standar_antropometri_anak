@@ -1,11 +1,59 @@
 library standar_antropometri_anak;
 
 import 'dart:math';
-
 import 'package:standar_antropometri_anak/bodyheight_age_table.dart';
+import 'package:standar_antropometri_anak/bodyheight_weight_table.dart';
 import 'package:standar_antropometri_anak/bodyweight_age_table.dart';
 
 class StandarAntropometriAnak {
+  static double getBodyWeightToHeigtIndex(
+    num bodyWeight,
+    num bodyHeight,
+    int ageInMonth, {
+    bool isFemale = false,
+  }) {
+    final bodyHeightFiltered = double.parse(bodyHeight.toStringAsFixed(1));
+
+    late double index;
+    late List heightRow;
+
+    if (!isFemale) {
+      if (ageInMonth <= 24) {
+        heightRow = maleBodyHeightWeightUnder24[bodyHeightFiltered] as List;
+      } else {
+        heightRow = maleBodyHeightWeightOver24[bodyHeightFiltered] as List;
+      }
+    } else {
+      if (ageInMonth <= 24) {
+        heightRow = femaleBodyHeightWeightUnder24[bodyHeightFiltered] as List;
+      } else {
+        heightRow = femaleBodyHeightWeightOver24[bodyHeightFiltered] as List;
+      }
+    }
+
+    final median = heightRow[3];
+
+    if (bodyWeight == median) {
+      index = 0;
+    } else if (bodyWeight > median) {
+      final highLimit = heightRow[6];
+      final oneSD = (highLimit - median) / 3;
+
+      final difference = bodyWeight - median;
+
+      index = difference / oneSD;
+    } else {
+      final lowLimit = heightRow[0];
+      final oneSD = (lowLimit - median) / 3;
+
+      final difference = median - bodyWeight;
+
+      index = difference / oneSD;
+    }
+
+    return double.parse(index.toStringAsFixed(1));
+  }
+
   static double getBMI(num weight, num heightInCm) {
     final height = heightInCm / 100;
     return double.parse(
