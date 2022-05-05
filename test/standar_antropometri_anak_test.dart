@@ -3,6 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:standar_antropometri_anak/standar_antropometri_anak.dart';
 
 void main() {
+  group('getBMI', () {
+    test('should return a correct bmi value', () {
+      final result = StandarAntropometriAnak.getBMI(65, 170);
+      expect(result, 22.5);
+    });
+  });
   group('getBodyWeightToAgeIndex', () {
     test(
         'should return a correct male index if body weight is more than median',

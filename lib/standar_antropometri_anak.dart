@@ -1,9 +1,18 @@
 library standar_antropometri_anak;
 
+import 'dart:math';
+
 import 'package:standar_antropometri_anak/bodyheight_age_table.dart';
 import 'package:standar_antropometri_anak/bodyweight_age_table.dart';
 
 class StandarAntropometriAnak {
+  static double getBMI(num weight, num heightInCm) {
+    final height = heightInCm / 100;
+    return double.parse(
+      (weight / pow(height, 2)).toStringAsFixed(1),
+    );
+  }
+
   static double getBodyWeightToAgeIndex(
     num bodyWeight,
     int ageInMonth, {

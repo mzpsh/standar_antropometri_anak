@@ -5,7 +5,7 @@ A dart package for measuring index and normal range of body weight to age, body 
 - [x] Body weight to age
 - [x] Body height to age
 - [ ] Body weight to height
-- [ ] BMI/IMT 
+- [x] BMI/IMT 
 - [ ] BMI to age
 
 
