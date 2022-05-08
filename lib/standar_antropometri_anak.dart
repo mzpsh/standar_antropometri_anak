@@ -1,11 +1,49 @@
 library standar_antropometri_anak;
 
 import 'dart:math';
+import 'package:standar_antropometri_anak/bmi_age_table.dart';
 import 'package:standar_antropometri_anak/bodyheight_age_table.dart';
 import 'package:standar_antropometri_anak/bodyheight_weight_table.dart';
 import 'package:standar_antropometri_anak/bodyweight_age_table.dart';
 
 class StandarAntropometriAnak {
+  static double getBmiToAgeIndex(
+    num bmi,
+    int ageInMonth, {
+    bool isFemale = false,
+  }) {
+    late double index;
+    late List ageRow;
+
+    if (!isFemale) {
+      ageRow = maleBmiAgeTable[ageInMonth] as List;
+    } else {
+      ageRow = femaleBmiAgeTable[ageInMonth] as List;
+    }
+
+    final median = ageRow[3];
+
+    if (bmi == median) {
+      index = 0;
+    } else if (bmi > median) {
+      final highLimit = ageRow[6];
+      final oneSD = (highLimit - median) / 3;
+
+      final difference = bmi - median;
+
+      index = difference / oneSD;
+    } else {
+      final lowLimit = ageRow[0];
+      final oneSD = (lowLimit - median) / 3;
+
+      final difference = median - bmi;
+
+      index = difference / oneSD;
+    }
+
+    return double.parse(index.toStringAsFixed(1));
+  }
+
   static double getBodyWeightToHeigtIndex(
     num bodyWeight,
     num bodyHeight,

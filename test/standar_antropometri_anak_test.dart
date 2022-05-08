@@ -144,43 +144,32 @@ void main() {
     });
   });
 
-  group('getBodyHeightToAgeIndex', () {
-    test(
-        'should return a correct male index if body height is more than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(119.9, 54);
+  group('getBmiToAgeIndex', () {
+    test('should return a correct male index if BMI is more than median', () {
+      final result = StandarAntropometriAnak.getBmiToAgeIndex(20.2, 59);
       expect(result, 3.0);
     });
-    test(
-        'should return a correct male index if body height is less than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(90.7, 48);
+    test('should return a correct male index if BMI is less than median', () {
+      final result = StandarAntropometriAnak.getBmiToAgeIndex(12.0, 59);
       expect(result, -3.0);
     });
-    test('should return a correct male index if body height is equal to median',
-        () {
-      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(104.4, 50);
+    test('should return a correct male index if BMI is equal to median', () {
+      final result = StandarAntropometriAnak.getBmiToAgeIndex(15.2, 59);
       expect(result, 0);
     });
-    test(
-        'should return a correct female index if body height is more than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(70.7, 5,
-          isFemale: true);
+    test('should return a correct female index if BMI is more than median', () {
+      final result =
+          StandarAntropometriAnak.getBmiToAgeIndex(20.4, 23, isFemale: true);
       expect(result, 3.0);
     });
-    test(
-        'should return a correct female index if body height is less than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(73.7, 20,
-          isFemale: true);
+    test('should return a correct female index if BMI is less than median', () {
+      final result =
+          StandarAntropometriAnak.getBmiToAgeIndex(12.2, 23, isFemale: true);
       expect(result, -3.0);
     });
-    test(
-        'should return a correct female index if body height is equal to median',
-        () {
-      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(95.7, 37,
-          isFemale: true);
+    test('should return a correct female index if BMI is equal to median', () {
+      final result =
+          StandarAntropometriAnak.getBmiToAgeIndex(15.4, 23, isFemale: true);
       expect(result, 0);
     });
   });
