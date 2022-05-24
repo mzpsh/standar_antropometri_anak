@@ -17,7 +17,9 @@ dependencies:
 ```
 ## Usage Example
 ```
-StandarAntropometriAnak.getBmiToAgeIndex(24, 60, true);
+final bmiToAgeIndex = 
+  StandarAntropometriAnak.getBmiToAgeIndex(24, 60, true);
+print(bmiToAgeIndex);
 ```
 
 References:
