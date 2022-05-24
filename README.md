@@ -8,6 +8,13 @@ A dart package for measuring index and normal range of body weight to age, body 
 - [x] BMI/IMT 
 - [x] BMI to age
 
+## Installation
+Add this to your pubspec.yaml
+```
+dependencies:
+  standar_antropometri_anak:
+    git: https://github.com/mzpsh/standar_antropometri_anak.git
+```
 
 References:
 [PERATURAN MENTERI KESEHATAN REPUBLIK INDONESIA NOMOR 2 TAHUN 2020 TENTANG STANDAR ANTROPOMETRI ANAK](http://hukor.kemkes.go.id/uploads/produk_hukum/PMK_No__2_Th_2020_ttg_Standar_Antropometri_Anak.pdf)
