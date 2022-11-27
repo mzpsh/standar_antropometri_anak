@@ -3,6 +3,90 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:standar_antropometri_anak/standar_antropometri_anak.dart';
 
 void main() {
+group('getBodyWeightToAgeIndex', () {
+    test(
+        'should return a correct male index if body weight is more than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(5.0, 0);
+      expect(result, 3.0);
+    });
+    test(
+        'should return a correct male index if body weight is less than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(2.1, 0);
+      expect(result, -3.0);
+    });
+    test('should return a correct male index if body weight is equal to median',
+        () {
+      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(3.3, 0);
+      expect(result, 0);
+    });
+    test(
+        'should return a correct female index if body weight is more than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(4.8, 0,
+          isFemale: true);
+      expect(result, 3.0);
+    });
+    test(
+        'should return a correct female index if body weight is less than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(2.0, 0,
+          isFemale: true);
+      expect(result, -3.0);
+    });
+    test(
+        'should return a correct female index if body weight is equal to median',
+        () {
+      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(3.2, 0,
+          isFemale: true);
+      expect(result, 0);
+    });
+  });
+
+  group('getBodyHeightToAgeIndex', () {
+    // FEMALE
+    test(
+        'should return a correct female index if body height is more than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(54.7, 0,
+          isFemale: true);
+      expect(result, 3.0);
+    });
+    test(
+        'should return a correct female index if body height is less than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(43.6, 0,
+          isFemale: true);
+      expect(result, -3.0);
+    });
+    test(
+        'should return a correct female index if body height is equal to median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(49.1, 0,
+          isFemale: true);
+      expect(result, 0);
+    });
+    test(
+        'should return a correct male index if body height is more than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(55.6, 0);
+      expect(result, 3.0);
+    });
+    test(
+        'should return a correct male index if body height is less than median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(44.2, 0);
+      expect(result, -3.0);
+    });
+    test('should return a correct male index if body height is equal to median',
+        () {
+      final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(49.9, 0);
+      expect(result, 0);
+    });
+    
+  });
+
   group('getBodyWeightToHeigtIndex', () {
     // FEMALE
     test(
@@ -103,47 +187,6 @@ void main() {
       expect(result, 22.5);
     });
   });
-  group('getBodyWeightToAgeIndex', () {
-    test(
-        'should return a correct male index if body weight is more than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(5.0, 0);
-      expect(result, 3.0);
-    });
-    test(
-        'should return a correct male index if body weight is less than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(2.1, 0);
-      expect(result, -3.0);
-    });
-    test('should return a correct male index if body weight is equal to median',
-        () {
-      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(3.3, 0);
-      expect(result, 0);
-    });
-    test(
-        'should return a correct female index if body weight is more than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(4.8, 0,
-          isFemale: true);
-      expect(result, 3.0);
-    });
-    test(
-        'should return a correct female index if body weight is less than median',
-        () {
-      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(2.0, 0,
-          isFemale: true);
-      expect(result, -3.0);
-    });
-    test(
-        'should return a correct female index if body weight is equal to median',
-        () {
-      final result = StandarAntropometriAnak.getBodyWeightToAgeIndex(3.2, 0,
-          isFemale: true);
-      expect(result, 0);
-    });
-  });
-
   group('getBmiToAgeIndex', () {
     test('should return a correct male index if BMI is more than median', () {
       final result = StandarAntropometriAnak.getBmiToAgeIndex(20.2, 59);
