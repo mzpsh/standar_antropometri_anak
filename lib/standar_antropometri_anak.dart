@@ -50,7 +50,13 @@ class StandarAntropometriAnak {
     int ageInMonth, {
     bool isFemale = false,
   }) {
-    final bodyHeightFiltered = double.parse(bodyHeight.toStringAsFixed(1));
+    final heightTop = bodyHeight.ceil() - bodyHeight;
+    final heightBottom = bodyHeight - bodyHeight.floor();
+    final bodyHeightFiltered = heightTop == heightBottom
+        ? bodyHeight
+        : heightTop > heightBottom
+            ? bodyHeight.floor().toDouble()
+            : bodyHeight.floor() + .5;
 
     late double index;
     late List heightRow;
@@ -173,8 +179,3 @@ class StandarAntropometriAnak {
     return double.parse(index.toStringAsFixed(1));
   }
 }
-
-// void main() {
-//   final result = StandarAntropometriAnak.getBodyHeightToAgeIndex(119.9, 54);
-//   print(result);
-// }

@@ -21,6 +21,8 @@ final bmiToAgeIndex =
   StandarAntropometriAnak.getBmiToAgeIndex(24, 60, true);
 print(bmiToAgeIndex);
 ```
+### Note on body weight to height
+Make sure `bodyHeight` value is between 45 and 110 if `ageMonth` is less than 24, and 65 to 120 if more than 24. 
 
 References:
 [PERATURAN MENTERI KESEHATAN REPUBLIK INDONESIA NOMOR 2 TAHUN 2020 TENTANG STANDAR ANTROPOMETRI ANAK](http://hukor.kemkes.go.id/uploads/produk_hukum/PMK_No__2_Th_2020_ttg_Standar_Antropometri_Anak.pdf)
