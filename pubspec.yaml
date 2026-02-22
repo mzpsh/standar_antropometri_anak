@@ -1,10 +1,10 @@
 name: standar_antropometri_anak
 description: A new Flutter package project.
-version: 0.0.3
+version: 0.0.4
 homepage:
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.16.2 <3.11.0"
   flutter: ">=1.17.0"
 
 dependencies:
