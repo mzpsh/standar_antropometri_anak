@@ -41,7 +41,7 @@ class StandarAntropometriAnak {
       index = difference / oneSD;
     }
 
-    return double.parse(index.toStringAsFixed(1));
+    return double.parse(index.toStringAsFixed(2));
   }
 
   static double getBodyWeightToHeigtIndex(
@@ -95,13 +95,13 @@ class StandarAntropometriAnak {
       index = difference / oneSD;
     }
 
-    return double.parse(index.toStringAsFixed(1));
+    return double.parse(index.toStringAsFixed(2));
   }
 
   static double getBMI(num weight, num heightInCm) {
     final height = heightInCm / 100;
     return double.parse(
-      (weight / pow(height, 2)).toStringAsFixed(1),
+      (weight / pow(height, 2)).toStringAsFixed(2),
     );
   }
 
@@ -139,7 +139,7 @@ class StandarAntropometriAnak {
       index = difference / oneSD;
     }
 
-    return double.parse(index.toStringAsFixed(1));
+    return double.parse(index.toStringAsFixed(2));
   }
 
   static double getBodyHeightToAgeIndex(
@@ -176,6 +176,6 @@ class StandarAntropometriAnak {
       index = difference / oneSD;
     }
 
-    return double.parse(index.toStringAsFixed(1));
+    return double.parse(index.toStringAsFixed(2));
   }
 }
